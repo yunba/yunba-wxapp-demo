@@ -1,0 +1,72 @@
+
+<!--index.wxml-->
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">云巴 API 演示</view>
+    <view class="page__desc">{{Online ? "在线" : "离线"}}</view>
+  </view>
+  <input class="weui-input" placeholder="请输入 topic/alias，最大 128 位" focus="{{focus}}" type="text" maxlength="{{maxLength}}" bindinput="topicInputEvent" />
+  <view class="weui-flex">
+      <button class="buttom-mini" size="mini" type="default" disabled="{{button_disabled}}" bindtap="Subscribe">Sub</button>
+      <button class="buttom-mini" size="mini" type="default" disabled="{{button_disabled}}" bindtap="Unsubscribe">Unsub</button>
+  </view> 
+  <view class="weui-flex">
+    <text class="tap-abled" bindtap="actionSheetTap">{{publish2_enabled==true ? 'publish2' : 'publish'}}</text>
+    <text class="weui-text">to {{topic}} </text>
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{publish_select}}" wx:key="{{item.name}}">
+        <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+      </label>
+    </radio-group>
+  </view>
+  <input class="weui-input" placeholder="请输入要发送的内容" auto-focus type="text" bindinput="payloadInputEvent" />
+  <button class="weui-btn" type="primary" size="default" disabled="{{button_disabled}}" bindtap="Publish">{{publish2_enabled==true ? 'publish2' : 'publish'}}</button>
+  <view wx:if="{{publish2_enabled==true}}" class="kind-list">
+    <block wx:for-items="{{publish2List}}" wx:key="{{item.id}}">
+      <view class="kind-list-item">
+        <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
+          <view class="kind-list-text">{{item.name}}</view>
+        </view>
+        <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
+          <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
+            <block wx:for-items="{{item.pages}}" wx:for-item="page" wx:key="*item">
+              <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                    <view class="weui-label">{{page}}</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                    <input class="navigator-text" placeholder="{{page}}" auto-focus type="text" bindinput="{{page}}" />
+                  </view>
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="page-section">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">当前选择</view>
+        </view>
+        <view class="weui-cell__bd">
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{yunba_api}}">
+            <view class="weui-input">{{yunba_api[index]}}</view>
+          </picker>
+        </view>
+      </view>
+    </view>
+    <view class="weui-flex">
+      <input class="weui-input" placeholder="{{index==2 ? 'topic' : 'alias'}}" auto-focus type="text" maxlength="128" bindinput="apiPayload" disabled="{{index==1 ? true : false}}"/>
+      <button type="default" bindtap="{{yunba_api[index]}}">{{yunba_api[index]}}</button>
+    </view>
+  </view>
+  <view class="page-section-spacing">
+    <scroll-view scroll-y="true" style="height: 150px; background-color: #FFFFFF;" scroll-top="{{scrollTop}}">
+      <text>{{message}}</text>
+    </scroll-view>
+  </view>
+</view>

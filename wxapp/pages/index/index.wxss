@@ -1,0 +1,13 @@
+/* pages/enter/enter.wxss */
+@import "../../lib/weui/weui.wxss";
+
+.page__title {
+    text-align: center
+}
+.page__desc {
+    text-align: center
+}
+
+.btn-area {
+    padding: 20px
+}

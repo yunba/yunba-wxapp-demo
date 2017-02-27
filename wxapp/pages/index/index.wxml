@@ -1,0 +1,29 @@
+<!--pages/enter/enter.wxml-->
+<view class="container">
+  <view class="page__hd">
+    <view class="page__title">云巴 API 演示</view>
+    <view class="page__desc">请输入 appkey 和 customid</view>
+  </view>
+  <view class="page-body">
+    <view class="page-section">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">appkey</view>
+          <view class="weui-cell__ft">
+            <input bindinput="appkeyInput" maxlength="24"/>
+          </view>
+        </view>
+        <view class="weui-cell">
+          <view class="weui-cell__bd">customid</view>
+          <view class="weui-cell__ft">
+            <input bindinput="customidInput"/>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="btn-area">
+      <button type="primary" size="40" bindtap="navigator" disabled="{{!connected}}">开始连接</button>
+      <!--isVaildCustomid && isVaildAppkey ? false : true-->
+    </view>
+  </view>
+</view>
