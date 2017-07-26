@@ -13,7 +13,7 @@ Page({
   },
 
   onLoad: function (options) {
-    const socket = app.globalData.io("wss://abj-rest-fc1.yunba.io:3003/")
+    const socket = app.globalData.io("wss://abj-rest-fc1.yunba.io:443/")
     app.globalData.socket = socket
     this.OnSocketEvent()
   },
