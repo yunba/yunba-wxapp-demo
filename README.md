@@ -1,5 +1,7 @@
 # 在微信小程序中使用云巴实时通信系统
 
+注：云巴现在不提供免费的微信 SDK，github 的演示代码不一定能工作。如果需要的话客户联系我们的[商务](xieting@yunba.io)购买微信小程序的相关服务。
+
 ## 准备
 
 云巴在微信小程序中的使用基于 socket io，有关 socket io 的接口详细介绍可以参考我们的[socket io 官方文档](https://yunba.io/docs/socketio_api_api_manual)。
